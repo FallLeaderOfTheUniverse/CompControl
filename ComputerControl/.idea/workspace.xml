@@ -46,11 +46,11 @@
       <file leaf-file-name="BashManager.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/BashManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14778325" vertical-offset="0" max-vertical-offset="406">
-              <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.11083744" vertical-offset="0" max-vertical-offset="406">
+              <caret line="9" column="24" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="24" />
               <folding>
                 <element signature="docComment;class#BashManager#0" expanded="false" />
-                <element signature="e#374#382#0" expanded="true" />
+                <element signature="e#376#384#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -476,11 +476,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/BashManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14778325" vertical-offset="0" max-vertical-offset="406">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.11083744" vertical-offset="0" max-vertical-offset="406">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="24" />
           <folding>
             <element signature="docComment;class#BashManager#0" expanded="false" />
-            <element signature="e#374#382#0" expanded="true" />
+            <element signature="e#376#384#0" expanded="true" />
           </folding>
         </state>
       </provider>
