@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by spier on 3/30/14.
@@ -12,7 +13,10 @@ public class BashManager {
     public static void main(String[] args) {
         BashManager bashManager = new BashManager();
         try {
-            bashManager.runScript("Amixer sset -q Master 80-");
+           List<String> list = bashManager.runScript("ifconfig");
+            for (String a : list) {
+                System.out.println(a);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
