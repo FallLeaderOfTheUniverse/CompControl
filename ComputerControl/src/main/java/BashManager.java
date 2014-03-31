@@ -10,17 +10,6 @@ import java.util.List;
  */
 public class BashManager {
     //TODO: написать контракт для методов
-    public static void main(String[] args) {
-        BashManager bashManager = new BashManager();
-        try {
-           List<String> list = bashManager.runScript("ifconfig");
-            for (String a : list) {
-                System.out.println(a);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public ArrayList<String> runScript(String command) throws IOException {
         ArrayList<String> result = new ArrayList<String>();
