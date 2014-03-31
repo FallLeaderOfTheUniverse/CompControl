@@ -1,0 +1,31 @@
+<formats>
+    <one>3g2</one>
+    <one>3gp</one>
+    <one>3gp2</one>
+    <one>3gpp</one>
+    <one>3gpp2</one>
+    <one>asf</one>
+    <one>avi</one>
+    <one>bin</one>
+    <one>dat</one>
+    <one>f4v</one>
+    <one>flv</one>
+    <one>gtp</one>
+    <one>m4v</one>
+    <one>mkv</one>
+    <one>mod</one>
+    <one>moov</one>
+    <one>mov</one>
+    <one>mp4</one>
+    <one>mpeg</one>
+    <one>mpg</one>
+    <one>mts</one>
+    <one>rm</one>
+    <one>spl</one>
+    <one>srt</one>
+    <one>swf</one>
+    <one>vob</one>
+    <one>wm</one>
+    <one>wmv</one>
+    <one>yuv</one>
+</formats>
