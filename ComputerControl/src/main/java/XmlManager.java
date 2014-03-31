@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ public class XmlManager {
         SAXBuilder saxBuilder = new SAXBuilder();
         File xmlFile = new File("bashScripts.xml");
         Document document = (Document) saxBuilder.build(xmlFile);
+
         Element rootNode = document.getRootElement();
         List list = rootNode.getChildren("bash");
         for (int i = 0; i < list.size(); i++) {
@@ -26,6 +28,21 @@ public class XmlManager {
             map.put(node.getChildText("name"), node.getChildText("make"));
         }
         return map;
+    }
+
+    public List<String> getVideoList() throws JDOMException, IOException {
+        List<String> list = new ArrayList<String>();
+        SAXBuilder saxBuilder = new SAXBuilder();
+        File xmlFile = new File("video.xml");
+        Document document = (Document) saxBuilder.build(xmlFile);
+
+        Element rootNode = document.getRootElement();
+        List listNode = rootNode.getChildren("format");
+        for (int i = 0; i < listNode.size(); i++) {
+            Element node = (Element) listNode.get(i);
+            list.add(node.getChildText("resolution"));
+        }
+        return list;
     }
 }
 
