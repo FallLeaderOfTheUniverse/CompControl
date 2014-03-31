@@ -9,6 +9,14 @@ import java.util.ArrayList;
  */
 public class BashManager {
     //TODO: написать контракт для методов
+    public static void main(String[] args) {
+        BashManager bashManager = new BashManager();
+        try {
+            bashManager.runScript("Amixer sset -q Master 80-");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public ArrayList<String> runScript(String command) throws IOException {
         ArrayList<String> result = new ArrayList<String>();
