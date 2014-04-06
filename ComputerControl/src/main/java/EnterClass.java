@@ -1,3 +1,4 @@
+import ConsoleInterface.ConsoleInterfaceStarter;
 import org.jdom.JDOMException;
 
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.util.Map;
  */
 public class EnterClass {
     public static void main(String[] args) {
+        new Thread(new ConsoleInterfaceStarter()).start();
 
     }
 }

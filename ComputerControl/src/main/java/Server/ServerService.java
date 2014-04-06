@@ -13,7 +13,7 @@ import java.net.Socket;
 
 public class ServerService {
 
-    public static void main(String[] args) throws IOException {
+    public void makeServer() throws IOException {
         BufferedReader in = null;
         PrintWriter out = null;
 
@@ -29,8 +29,8 @@ public class ServerService {
 
         in = new BufferedReader(new InputStreamReader(client.getInputStream()));
         out = new PrintWriter(client.getOutputStream(), true);
-        String input, output;
 
+        String input;
         while ((input = in.readLine()) != null) {
             if (input.equalsIgnoreCase("exit")) break;
             out.println("S ::: " + input);
