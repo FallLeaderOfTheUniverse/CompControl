@@ -21,6 +21,7 @@ public class ServerService {
         Socket client = null;
 
         try {
+            System.out.println("waiting for client");
             servers = new ServerSocket(4444);
             client = servers.accept();
         } catch (IOException e) {
