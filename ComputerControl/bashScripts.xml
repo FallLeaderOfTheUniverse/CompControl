@@ -28,5 +28,9 @@
         <name>volumedown</name>
         <make>amixer set Master 5-</make>
     </bash>
+    <bash>
+        <name>volumeset</name>
+        <make>amixer set Master $(PERSENT)</make>
+    </bash>
 
 </scripts>
