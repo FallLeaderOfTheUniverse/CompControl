@@ -15,6 +15,7 @@ public class CommandThread implements Runnable {
     @Override
     public void run() {
         CommandManager bash = new CommandManager(command);
+        System.out.println(command + " from thread");
         try {
             bash.runScript();
         } catch (IOException e) {

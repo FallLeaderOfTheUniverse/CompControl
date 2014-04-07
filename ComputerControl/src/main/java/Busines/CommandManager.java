@@ -24,6 +24,7 @@ public class CommandManager {
     }
 
     public ArrayList<String> runScript() throws IOException {
+        System.out.println(command + " going to start");
         ArrayList<String> result = new ArrayList<String>();
         String resultExecute = null;
         Runtime runtime = Runtime.getRuntime();
@@ -36,11 +37,11 @@ public class CommandManager {
     }
 
     public String recogniseCommand() throws Exception {
-        if (command.substring(0,3).equals("bash")) {
-            new Thread(new CommandThread(getBashCommandByClientText(command.substring(4))));
+        if (command.substring(0,4).equals("bash")) {
+            new Thread(new CommandThread(getBashCommandByClientText(command.substring(5)))).start();
             return "command run";
         }
-        if (command.substring(0,3).equals("echo")) {
+        if (command.substring(0,4).equals("echo")) {
             return command;
         }
         return "wrong command";

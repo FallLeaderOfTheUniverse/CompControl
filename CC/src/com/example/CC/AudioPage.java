@@ -22,23 +22,22 @@ public class AudioPage extends Activity implements SeekBar.OnSeekBarChangeListen
 
         seekBar.setMax(100);
         seekBar.setProgress(55);
-        new Thread(new ClientStarter("localhost" ,"bash volume set " + seekBar.getProgress())).start();
+        new Thread(new ThreadForSocket("bash volume set " + seekBar.getProgress())).start();
 
     }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        //NOP
+        // TODO Auto-generated method stub
     }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-        //NOP
+        // TODO Auto-generated method stub
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        Log.d("audioPage" ,"считалось");
         new Thread(new ClientStarter("localhost" ,"bash volume set " + seekBar.getProgress())).start();
     }
 }

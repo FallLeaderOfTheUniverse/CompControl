@@ -20,16 +20,15 @@ public class ServerCommunication {
         PrintWriter out = null;
         try {
             Socket socket = SingletonSocket.getInstance(ip, port);
-            Log.i("ServerCommunication", "socket created");
 
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
             String fromServer = null;
-            while (!fromServer.equals("accept")) {
+            do {
                 out.println(command);
                 fromServer = in.readLine();
-            }
+            } while (!fromServer.equals("accept"));
 
 
         } catch (Exception e) {

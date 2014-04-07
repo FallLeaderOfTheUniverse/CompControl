@@ -1,4 +1,5 @@
 import Busines.CommandManager;
+import ConsoleInterface.Command;
 import ConsoleInterface.ConsoleInterfaceStarter;
 import Server.ServerService;
 import org.jdom.JDOMException;
@@ -20,6 +21,11 @@ public class EnterClass {
             e.printStackTrace();
         }
 
+        /*CommandManager manager = new CommandManager("bash volume set 100");
+        System.out.println(manager.recogniseCommand());*/
+
+                /*CommandManager manager = new CommandManager("amixer sset -q Master 100%");
+        manager.runScript();*/
 
         /*CommandManager commandManager = new CommandManager("volume set 50");
         System.out.println(commandManager.getBashCommandByClientText());*/

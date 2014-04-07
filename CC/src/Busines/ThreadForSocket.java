@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
  * Created by spier on 4/7/14.
  */
 public class ThreadForSocket implements Runnable {
-    private final String IP = "localhost";
+    private final String IP = "192.168.1.7";
     private final Integer PORT = 4444;
     private String command;
 
@@ -20,7 +20,6 @@ public class ThreadForSocket implements Runnable {
     @Override
     public void run() {
         ServerCommunication serverCommunication = new ServerCommunication();
-        Log.i("ThreadForSocket", command);
         try {
             InetAddress ip = InetAddress.getByName(IP);
             serverCommunication.sendCommand(command, ip, PORT);
