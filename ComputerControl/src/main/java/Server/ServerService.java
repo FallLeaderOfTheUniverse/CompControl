@@ -1,5 +1,7 @@
 package Server;
 
+import Busines.CommandManager;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,7 +15,8 @@ import java.net.Socket;
 
 public class ServerService {
 
-    public void makeServer() throws IOException {
+    //висит, слушает и выполняет команды. А еще он страшный.
+    public void makeServer() throws Exception {
         BufferedReader in = null;
         PrintWriter out = null;
 
@@ -24,6 +27,7 @@ public class ServerService {
             System.out.println("waiting for client");
             servers = new ServerSocket(4444);
             client = servers.accept();
+            System.out.println("connected");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -31,12 +35,18 @@ public class ServerService {
         in = new BufferedReader(new InputStreamReader(client.getInputStream()));
         out = new PrintWriter(client.getOutputStream(), true);
 
-        String input;
+        String input, output;
         while ((input = in.readLine()) != null) {
-            if (input.equalsIgnoreCase("exit")) break;
-            out.println("S ::: " + input);
+            out.println("accept");
             System.out.println(input);
+
+            CommandManager command = new CommandManager(input);
+            output = command.recogniseCommand();
+
+            System.out.println(output);
         }
+
+        System.out.println("server exit");
         out.close();
         in.close();
         client.close();

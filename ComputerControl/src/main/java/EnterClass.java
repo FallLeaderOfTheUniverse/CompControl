@@ -1,3 +1,4 @@
+import Busines.CommandManager;
 import ConsoleInterface.ConsoleInterfaceStarter;
 import Server.ServerService;
 import org.jdom.JDOMException;
@@ -10,7 +11,8 @@ import java.util.Map;
  * time - 4:41 PM
  */
 public class EnterClass {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
         ServerService service = new ServerService();
         try {
             service.makeServer();
@@ -18,5 +20,8 @@ public class EnterClass {
             e.printStackTrace();
         }
 
+
+        /*CommandManager commandManager = new CommandManager("volume set 50");
+        System.out.println(commandManager.getBashCommandByClientText());*/
     }
 }

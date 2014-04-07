@@ -9,14 +9,22 @@ import java.net.Socket;
 /**
  * Created by spier on 4/6/14.
  */
-public class ClientStarter {
 
-    public void makeClient(String ip) {
+//TODO: обеспечить устойчивость связи
+public class ClientStarter implements Runnable{
+    String ip = null;
+    private String command;
 
+    public ClientStarter(String ip, String command) {
+        this.ip = ip;
+        this.command = command;
+    }
+
+    @Override
+    public void run() {
         Socket fromServer = null;
         BufferedReader in = null;
         PrintWriter out = null;
-        BufferedReader inu = null;
         InetAddress address = null;
 
         try {
@@ -24,13 +32,11 @@ public class ClientStarter {
             fromServer = new Socket(address, 4444);
             in = new BufferedReader(new InputStreamReader(fromServer.getInputStream()));
             out = new PrintWriter(fromServer.getOutputStream(), true);
-            inu = new BufferedReader(new InputStreamReader(System.in));
 
             String fuser, fserver;
 
             for (int i = 0; i < 10; i++) {
-                out.println("blablablabla");
-                wait(1000);
+                out.println(command);
             }
             fserver = in.readLine();
             System.out.println(fserver);
@@ -41,11 +47,11 @@ public class ClientStarter {
             try {
                 out.close();
                 in.close();
-                inu.close();
                 fromServer.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
     }
 }

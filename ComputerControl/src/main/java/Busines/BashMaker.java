@@ -16,8 +16,9 @@ public class BashMaker {
 
     public String buildBash() throws Exception {
         Integer i1 = script.indexOf("$");
-        Integer i2 = i1 + 7;
-        if (!inner.equals(script.substring(i1, i2))) {
+        Integer i2 = i1 + inner.length() + 3;
+        System.out.println(script.substring(i1, i2));
+        if (!inner.equalsIgnoreCase(script.substring(i1+2, i2-1))) {
             throw new Exception("bash do not content " + inner);
         }
 

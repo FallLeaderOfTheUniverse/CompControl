@@ -3,6 +3,7 @@ package Busines;
 import org.jdom.JDOMException;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,15 @@ public class FileManager {
     //содержимое folder
     public File[] getFiles() {
         return file.listFiles();
+    }
+
+    public void makeFile(List<String> list) throws IOException {
+        FileWriter out = new FileWriter(file);
+        for (String s : list) {
+            out.write(s + "\n");
+        }
+        out.flush();
+        out.close();
     }
 
     //TODO: внедрить сюда Spring

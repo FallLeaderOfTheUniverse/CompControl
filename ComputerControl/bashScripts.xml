@@ -29,8 +29,8 @@
         <make>amixer set Master 5-</make>
     </bash>
     <bash>
-        <name>volumeset</name>
-        <make>amixer set Master $(PERSENT)</make>
+        <name>volume set</name>
+        <make>amixer sset -q Master $(PERCENT)</make>
     </bash>
 
 </scripts>
