@@ -1,4 +1,5 @@
 import Busines.CommandManager;
+import Busines.Script;
 import ConsoleInterface.Command;
 import ConsoleInterface.ConsoleInterfaceStarter;
 import Server.ServerService;
@@ -14,20 +15,16 @@ import java.util.Map;
 public class EnterClass {
     public static void main(String[] args) throws Exception {
 
-        ServerService service = new ServerService();
+        /*ServerService service = new ServerService();
         try {
             service.makeServer();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+
+        new Thread(new Script("bash volume set 100")).start();
 
         /*CommandManager manager = new CommandManager("bash volume set 100");
-        System.out.println(manager.recogniseCommand());*/
-
-                /*CommandManager manager = new CommandManager("amixer sset -q Master 100%");
-        manager.runScript();*/
-
-        /*CommandManager commandManager = new CommandManager("volume set 50");
-        System.out.println(commandManager.getBashCommandByClientText());*/
+        System.out.println(manager.stringToList("bash volume set 100"));*/
     }
 }

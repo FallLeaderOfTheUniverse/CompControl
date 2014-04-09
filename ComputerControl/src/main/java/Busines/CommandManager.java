@@ -1,12 +1,8 @@
 package Busines;
 
-import ConsoleInterface.Command;
 import org.jdom.JDOMException;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,51 +19,46 @@ public class CommandManager {
         this.command = command;
     }
 
-    public ArrayList<String> runScript() throws IOException {
-        System.out.println(command + " going to start");
-        ArrayList<String> result = new ArrayList<String>();
-        String resultExecute = null;
-        Runtime runtime = Runtime.getRuntime();
-        Process process = runtime.exec(new String[]{"/bin/bash", "-c", command});
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        while ((resultExecute = bufferedReader.readLine()) != null) {
-            result.add(resultExecute);
-        }
-        return result;
-    }
-
     public String recogniseCommand() throws Exception {
-        if (command.substring(0,4).equals("bash")) {
-            new Thread(new CommandThread(getBashCommandByClientText(command.substring(5)))).start();
-            return "command run";
+        StringManager stringManager = new StringManager(command);
+        if (command.substring(0, 4).equals("bash")) {
+            return getBashCommandByClientText(stringManager.stringToList());
         }
-        if (command.substring(0,4).equals("echo")) {
+        if (command.substring(0, 4).equals("echo")) {
             return command;
         }
         return "wrong command";
     }
 
-    private String getBashCommandByClientText(String in) throws Exception {
-        String help = in;
-        System.out.println("/" + help + "/");///
-        int i = help.indexOf(" ");
-        if (help.substring(0, i).equals("volume")) {
-            help = help.substring(i+1);
-            System.out.println("/" + help + "/");///
-            i = help.indexOf(" ");
-            if (help.substring(0, i).equals("set")) {
-                help = help.substring(i+1);
-                System.out.println("/" + help + "/");///
-
-                BashMaker bashMaker = new BashMaker(help + "%", get("volume set"), "percent");
-                return bashMaker.buildBash();
+    private String getBashCommandByClientText(List<String> list) throws Exception {
+        if (list.get(1).equals("volume")) {
+            if (list.get(2).equals("set")) {
+                return makeBash(list, 3, "$(PERCENT)", "volume set");
+            }
+            if (list.get(2).equals("mute")) {
+                return makeBash("volume mute");
             }
         }
         return null;
     }
 
-    //TODO: переписать имя, да у всего класса.
-    private String get(String in) throws JDOMException, IOException {
+    private String makeBash(List<String> list, int i, String teg, String commandName) throws Exception{
+        StringManager stringManager = new StringManager(getFromXml(commandName));
+        BashMaker bashMaker = new BashMaker(stringManager.stringToList(), list.get(i), teg);
+
+        String out = "";
+        for (String s : bashMaker.buildBashByTeg()) {
+            if (out.equals("")) out = s;
+            else out = out + " " + s;
+        }
+        return out;
+    }
+
+    private String makeBash(String commandName) throws Exception{
+        return getFromXml(commandName);
+    }
+
+    private String getFromXml(String in) throws JDOMException, IOException {
         XmlManager manager = new XmlManager();
         return manager.getBashMap().get(in);
     }

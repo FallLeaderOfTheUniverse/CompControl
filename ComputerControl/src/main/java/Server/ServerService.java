@@ -1,6 +1,7 @@
 package Server;
 
 import Busines.CommandManager;
+import Busines.Script;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,10 +41,13 @@ public class ServerService {
             out.println("accept");
             System.out.println(input);
 
-            CommandManager command = new CommandManager(input);
-            output = command.recogniseCommand();
 
-            System.out.println(output);
+            new Thread(new Script(input)).start();
+
+            /*CommandManager command = new CommandManager(input);
+            output = command.recogniseCommand();
+*/
+            //System.out.println(output);
         }
 
         System.out.println("server exit");
