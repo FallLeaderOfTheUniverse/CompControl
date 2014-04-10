@@ -1,33 +1,39 @@
-package Busines;
+package Core.Busines.Script;
 
+import Core.Busines.Script.Core.CommandManager;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by spier on 4/7/14.
+ * Created by spier on 4/10/14.
  */
-public class Script implements Runnable {
+public class ScriptRunner {
     private String script;
 
-    public Script(String script) {
+    public ScriptRunner(String script) {
         this.script = script;
     }
 
-    @Override
     public void run() {
+        runScript(getScript(script));
+        //return runScript(getScript(script));
+    }
+
+    private String getScript(String script) {
+        CommandManager commandManager = new CommandManager(script);
+        String command = null;
         try {
-            CommandManager manager = new CommandManager(script);
-            script = manager.recogniseCommand();
-            System.out.println(script);
+            command = commandManager.getCommand(script);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return command;
+    }
 
-        
+    private List<String> runScript(String script) {
         String resultExecute;
         ArrayList<String> result = new ArrayList<String>();
         Runtime runtime = Runtime.getRuntime();
@@ -41,6 +47,6 @@ public class Script implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return result;
     }
 }
-

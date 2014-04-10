@@ -1,4 +1,4 @@
-package Busines.Interfaces;
+package Core.Busines.Interfaces;
 
 import java.io.File;
 import java.util.List;

@@ -1,5 +1,7 @@
-package Busines;
+package Core.Busines.Script.Core;
 
+import Core.Busines.Managers.StringManager;
+import Core.Busines.Xml.XmlManager;
 import org.jdom.JDOMException;
 
 import java.io.IOException;
@@ -19,15 +21,9 @@ public class CommandManager {
         this.command = command;
     }
 
-    public String recogniseCommand() throws Exception {
+    public String getCommand(String command) throws Exception {
         StringManager stringManager = new StringManager(command);
-        if (command.substring(0, 4).equals("bash")) {
-            return getBashCommandByClientText(stringManager.stringToList());
-        }
-        if (command.substring(0, 4).equals("echo")) {
-            return command;
-        }
-        return "wrong command";
+        return getBashCommandByClientText(stringManager.stringToList());
     }
 
     private String getBashCommandByClientText(List<String> list) throws Exception {

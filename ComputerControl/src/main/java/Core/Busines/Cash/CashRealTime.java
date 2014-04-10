@@ -1,8 +1,6 @@
-package Busines.Cash;
+package Core.Busines.Cash;
 
-import Busines.Interfaces.Cash;
-import Busines.StringManager;
-import javafx.beans.property.adapter.ReadOnlyJavaBeanBooleanProperty;
+import Core.Busines.Interfaces.Cash;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -1,7 +1,6 @@
 package Server;
 
-import Busines.CommandManager;
-import Busines.Script;
+import Garbage.Script;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,18 +35,16 @@ public class ServerService {
         in = new BufferedReader(new InputStreamReader(client.getInputStream()));
         out = new PrintWriter(client.getOutputStream(), true);
 
-        String input, output;
-        while ((input = in.readLine()) != null) {
+        String input = "", output;
+        while (!input.equals("end")) {
+            input = in.readLine();
             out.println("accept");
             System.out.println(input);
 
 
-            new Thread(new Script(input)).start();
+            new Script(input).run();
 
-            /*CommandManager command = new CommandManager(input);
-            output = command.recogniseCommand();
-*/
-            //System.out.println(output);
+
         }
 
         System.out.println("server exit");
