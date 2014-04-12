@@ -22,7 +22,6 @@ public class BusinessApi implements ServerApi {
         return echo;
     }
 
-
     //TODO: Передаелать с использованием кеша
     @Override
     public List<File> getFiles(File file) {
@@ -31,12 +30,14 @@ public class BusinessApi implements ServerApi {
     }
 
     @Override
-    public List<File> getAudio(Integer iden) {
+    public List<File> getAudio(Integer identification) {
+        //TODO: реализовать
         return null;
     }
 
     @Override
     public List<File> getVideo() {
+        //TODO: realize it
         return null;
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by spier on 4/10/14.
  */
-public interface ServerApi {
+interface ServerApi {
 
     public void runScript(String script);
 

@@ -1,4 +1,6 @@
-import Garbage.Script;
+import Core.Busines.Managers.FileManager;
+
+import java.io.File;
 
 /**
  * Created by spier on 3/31/14.
@@ -14,7 +16,13 @@ public class EnterClass {
             e.printStackTrace();
         }*/
 
-        new Thread(new Script("bash volume set 100")).start();
+        File file = new File("/home/spier/");
+        FileManager fileManager = new FileManager(file);
+
+        for (File f : fileManager.getFiles()) {
+            System.out.println(f);
+        }
+
 
         /*CommandManager manager = new CommandManager("bash volume set 100");
         System.out.println(manager.stringToList("bash volume set 100"));*/

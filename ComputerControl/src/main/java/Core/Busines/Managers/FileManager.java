@@ -1,6 +1,7 @@
 package Core.Busines.Managers;
 
 import Core.Busines.Xml.XmlManager;
+import com.sun.deploy.util.ArrayUtil;
 import org.jdom.JDOMException;
 
 import java.io.File;
@@ -22,6 +23,7 @@ public class FileManager {
     }
 
     //содержимое folder
+    //TODO: убрать скрытые папки из return
     public List<File> getFiles() {
         List<File> files = new ArrayList<File>();
         for (File f : file.listFiles()) {

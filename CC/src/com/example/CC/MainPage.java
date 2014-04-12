@@ -56,8 +56,8 @@ public class MainPage extends Activity {
         files.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent system = new Intent(MainPage.this, SystemPage.class);
-                startActivity(system);
+                Intent files = new Intent(MainPage.this, FilePage.class);
+                startActivity(files);
             }
         });
     }

@@ -1,4 +1,4 @@
-package Core.Busines.Script.Core;
+package Core.Busines.Script;
 
 import Core.Busines.Managers.StringManager;
 import Core.Busines.Xml.XmlManager;
@@ -11,10 +11,8 @@ import java.util.List;
  * Created by spier on 3/30/14.
  * time - 4:58 PM
  */
-public class CommandManager {
-    //TODO: написать контракт для методов
-    //TODO: пересмотреть этот класс, возможно разделение
-    //TODO: нужен рефакторинг класса, да и всей программы
+
+class CommandManager {
     private String command;
 
     public CommandManager(String command) {

@@ -1,7 +1,5 @@
 package Core.Busines.Script;
 
-import Core.Busines.Script.Core.CommandManager;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -10,13 +8,14 @@ import java.util.List;
 /**
  * Created by spier on 4/10/14.
  */
-public class ScriptRunner {
+public class ScriptRunner implements ScriptInterface{
     private String script;
 
     public ScriptRunner(String script) {
         this.script = script;
     }
 
+    @Override
     public void run() {
         runScript(getScript(script));
         //return runScript(getScript(script));

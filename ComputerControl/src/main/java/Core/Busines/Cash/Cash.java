@@ -1,4 +1,4 @@
-package Core.Busines.Interfaces;
+package Core.Busines.Cash;
 
 import java.io.File;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by spier on 4/9/14.
  */
-public interface Cash {
+interface Cash {
 
     public List<File> getFiles();
 }

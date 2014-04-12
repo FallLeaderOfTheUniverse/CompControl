@@ -1,7 +1,5 @@
 package Core.Busines.Cash;
 
-import Core.Busines.Interfaces.Cash;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +14,7 @@ import java.util.Map;
 public class CashRealTime implements Cash {
     private static Map<File, Object> cash;
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         CashRealTime cashRealTime = new CashRealTime();
         Map<File, Object> map = cashRealTime.getOneLevelMap(new File("/"));
         //cashRealTime.mapSout(map);
@@ -28,7 +26,7 @@ public class CashRealTime implements Cash {
         cash = cashRealTime.getRecursMap(file, cash, folder);
 
         cashRealTime.recursMapOutput(cash);
-    }
+    }*/
 
     @Override
     public List<File> getFiles() {

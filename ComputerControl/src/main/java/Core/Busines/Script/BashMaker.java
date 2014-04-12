@@ -1,11 +1,11 @@
-package Core.Busines.Script.Core;
+package Core.Busines.Script;
 
 import java.util.List;
 
 /**
  * Created by spier on 4/4/14.
  */
-public class BashMaker {
+class BashMaker {
     private String body;
     private List<String> list;
     private String teg;

@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by spier on 4/6/14.
  */
-public class Console {
+class Console {
 
     public String read() {
         Scanner scan = new Scanner(System.in);

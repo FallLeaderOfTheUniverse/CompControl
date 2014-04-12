@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.List;
 
 /**
  * Created by spier on 4/6/14.
@@ -12,12 +13,19 @@ import java.net.Socket;
 
 //TODO: обеспечить устойчивость связи
 public class ClientStarter implements Runnable{
-    String ip = null;
+    private String ip = null;
     private String command;
+    private List<String> lines = null;
 
     public ClientStarter(String ip, String command) {
         this.ip = ip;
         this.command = command;
+    }
+
+    public ClientStarter(String ip, String command, List<String> lines) {
+        this.ip = ip;
+        this.command = command;
+        this.lines = lines;
     }
 
     @Override
@@ -39,6 +47,11 @@ public class ClientStarter implements Runnable{
                 out.println(command);
             }
             fserver = in.readLine();
+
+            //TODO: перевести одну линию в список
+            if (lines != null) {
+                lines.add(fserver);
+            }
             System.out.println(fserver);
 
         } catch (Exception e) {

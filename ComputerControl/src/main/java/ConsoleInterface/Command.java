@@ -5,7 +5,7 @@ import org.omg.CORBA.CODESET_INCOMPATIBLE;
 /**
  * Created by spier on 4/6/14.
  */
-public class Command {
+class Command {
 
     public void runCommand(String command) {
         if (command.equals("exit")) {
