@@ -1,21 +1,13 @@
 package com.example.CC;
 
-import Busines.ThreadForSocket;
-import Client.ClientStarter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.Socket;
-
-public class MainPage extends Activity {
+public class MainPage extends Activity implements BackComm{
+    String answer;
     /**
      * Called when the activity is first created.
      */
@@ -60,6 +52,13 @@ public class MainPage extends Activity {
                 startActivity(files);
             }
         });
+
+        //new Thread(new TTToServer("echo blabla", answer, MainPage.this ));
+    }
+
+    @Override
+    public void makeCall() {
+
     }
 }
 

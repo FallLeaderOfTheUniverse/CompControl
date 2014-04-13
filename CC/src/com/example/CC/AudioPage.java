@@ -1,12 +1,9 @@
 package com.example.CC;
 
-import Busines.ServerCommunication;
-import Busines.ThreadForSocket;
-import Client.ClientStarter;
+import Client.TTClientStarter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -50,6 +47,6 @@ public class AudioPage extends Activity implements SeekBar.OnSeekBarChangeListen
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        new Thread(new ClientStarter("localhost" ,"bash volume set " + seekBar.getProgress())).start();
+        new Thread(new TTClientStarter("localhost" ,"bash volume set " + seekBar.getProgress())).start();
     }
 }

@@ -12,17 +12,17 @@ import java.util.List;
  */
 
 //TODO: обеспечить устойчивость связи
-public class ClientStarter implements Runnable{
+public class TTClientStarter implements Runnable{
     private String ip = null;
     private String command;
     private List<String> lines = null;
 
-    public ClientStarter(String ip, String command) {
+    public TTClientStarter(String ip, String command) {
         this.ip = ip;
         this.command = command;
     }
 
-    public ClientStarter(String ip, String command, List<String> lines) {
+    public TTClientStarter(String ip, String command, List<String> lines) {
         this.ip = ip;
         this.command = command;
         this.lines = lines;

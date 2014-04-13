@@ -1,4 +1,6 @@
 import Core.Busines.Managers.FileManager;
+import Core.Chooser;
+import Server.ServerService;
 
 import java.io.File;
 
@@ -16,13 +18,22 @@ public class EnterClass {
             e.printStackTrace();
         }*/
 
-        File file = new File("/home/spier/");
+        /*File file = new File("/home/spier/");
         FileManager fileManager = new FileManager(file);
 
         for (File f : fileManager.getFiles()) {
             System.out.println(f);
-        }
+        }*/
 
+        /*Chooser chooser = new Chooser();
+        String s = chooser.commandRecognise("file /");
+        System.out.println(s);
+
+
+*/
+
+        ServerService service = new ServerService();
+        service.startServer();
 
         /*CommandManager manager = new CommandManager("bash volume set 100");
         System.out.println(manager.stringToList("bash volume set 100"));*/

@@ -41,9 +41,13 @@ public class ServerService implements Server {
                 out.println("accept");
                 System.out.println(input);
 
-                Chooser chooser = new Chooser();
-                String s = chooser.commandRecognise(input);
-                out.println(s);
+                System.out.println("command= " + input);
+
+                if (input != null) {
+                    Chooser chooser = new Chooser();
+                    String s = chooser.commandRecognise(input);
+                    out.println(s);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,6 +58,10 @@ public class ServerService implements Server {
                 in.close();
                 client.close();
                 servers.close();
+
+                //старнуем новый если этот закрылся
+                ServerService service = new ServerService();
+                service.startServer();
             } catch (Exception e) {
                 e.printStackTrace();
             }

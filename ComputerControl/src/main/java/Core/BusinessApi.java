@@ -24,19 +24,23 @@ public class BusinessApi implements ServerApi {
 
     //TODO: Передаелать с использованием кеша
     @Override
-    public List<File> getFiles(File file) {
+    public String getFiles(File file) {
         FileManager fileManager = new FileManager(file);
-        return fileManager.getFiles();
+        String s = "";
+        for (File f : fileManager.getFiles()) {
+            s += f.toString() + " ";
+        }
+        return s;
     }
 
     @Override
-    public List<File> getAudio(Integer identification) {
+    public String getAudio(Integer identification) {
         //TODO: реализовать
         return null;
     }
 
     @Override
-    public List<File> getVideo() {
+    public String getVideo() {
         //TODO: realize it
         return null;
     }

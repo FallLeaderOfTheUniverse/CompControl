@@ -7,6 +7,7 @@ import java.net.Socket;
 /**
  * Created by spier on 4/7/14.
  */
+//TODO: нужен ли вообще этот пакет?
 public class SingletonSocket {
     private static Socket instance;
 

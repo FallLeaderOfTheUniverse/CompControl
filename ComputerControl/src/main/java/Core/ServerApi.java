@@ -12,9 +12,9 @@ interface ServerApi {
 
     public String makeEcho(String echo);
 
-    public List<File> getFiles(File file);
+    public String getFiles(File file);
 
-    public List<File> getAudio(Integer iden);
+    public String getAudio(Integer iden);
 
-    public List<File> getVideo();
+    public String getVideo();
 }

@@ -27,15 +27,15 @@ public class Chooser {
         }
         if (name.equals("file")) {
             //получаем список файлов в данной директории, возвращаем на клиент
-            return fileToString(api.getFiles(new File(script)));
+            return api.getFiles(new File(script));
         }
         if (name.equals("audi")) {
             //получаем определенно построенный спиоск аудио файлов
-            return fileToString(api.getAudio(Integer.parseInt(script)));
+            return api.getAudio(Integer.parseInt(script));
         }
         if (name.equals("vide")) {
             //получаем определенно построенный список видео файлов
-            return fileToString(api.getVideo());
+            return api.getVideo();
         }
         return "wrong";
     }
