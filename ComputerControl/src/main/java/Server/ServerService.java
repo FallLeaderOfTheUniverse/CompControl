@@ -39,14 +39,15 @@ public class ServerService implements Server {
             while (!input.equals("end")) {
                 input = in.readLine();
                 out.println("accept");
-                System.out.println(input);
+                //System.out.println(input);
 
-                System.out.println("command= " + input);
+                System.out.println("command=:" + input + ":");
 
                 if (input != null) {
                     Chooser chooser = new Chooser();
                     String s = chooser.commandRecognise(input);
                     out.println(s);
+                    System.out.println("answer" + s);
                 }
             }
         } catch (Exception e) {

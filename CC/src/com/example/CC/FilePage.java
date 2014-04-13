@@ -21,6 +21,7 @@ public class FilePage extends Activity {
     ListView files;
     String answer;
     String[] list = {"null", "null", "null"};
+    String [] shortList = {};
     FilePage filePage;
 
     @Override
@@ -39,8 +40,7 @@ public class FilePage extends Activity {
             }
         });
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listview_layout, shortList);
 
         // присваиваем адаптер списку
         files.setAdapter(adapter);
@@ -51,16 +51,20 @@ public class FilePage extends Activity {
 
     private void refresh(String s) {
         Log.d("from filepage answer", s);
-
         StringManager strMan = new StringManager();
+        //String [] shortList = null;
+        list = strMan.rightToArray(s);
+        shortList = strMan.toArrayEnd(s);
 
-        list = strMan.toArray(s);
+        for (String r : shortList) {
+           // Log.d("list", r);
+        }
+        for (String r : list) {
+           // Log.d("list1", r);
+        }
 
-        // создаем адаптер
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, list);
-
-        // присваиваем адаптер списку
+        // вывод
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listview_layout, shortList);
         files.setAdapter(adapter);
     }
 

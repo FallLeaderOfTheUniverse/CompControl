@@ -27,7 +27,9 @@ public class FileManager {
     public List<File> getFiles() {
         List<File> files = new ArrayList<File>();
         for (File f : file.listFiles()) {
-            files.add(f);
+            if (f.toString().indexOf("/.") == -1) {
+                files.add(f);
+            }
         }
         return files;
     }
