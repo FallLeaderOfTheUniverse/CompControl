@@ -17,10 +17,10 @@ import java.util.concurrent.Future;
 /**
  * Created by spier on 4/8/14.
  */
-public class FilePage extends Activity {
+public class FilePage extends Activity implements ServerCall{
     ListView files;
     String answer;
-    String[] list = {"null", "null", "null"};
+    String[] list = {};
     String [] shortList = {};
     FilePage filePage;
 
@@ -40,35 +40,29 @@ public class FilePage extends Activity {
             }
         });
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listview_layout, shortList);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listview_layout, shortList);
 
         // присваиваем адаптер списку
-        files.setAdapter(adapter);
+        //files.setAdapter(adapter);
 
        callServer("file /");
 
     }
 
-    private void refresh(String s) {
+    @Override
+    public void refresh(String s) {
         Log.d("from filepage answer", s);
         StringManager strMan = new StringManager();
         //String [] shortList = null;
         list = strMan.rightToArray(s);
         shortList = strMan.toArrayEnd(s);
-
-        for (String r : shortList) {
-           // Log.d("list", r);
-        }
-        for (String r : list) {
-           // Log.d("list1", r);
-        }
-
         // вывод
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listview_layout, shortList);
         files.setAdapter(adapter);
     }
 
-    private void callServer(String command) {
+    @Override
+    public void callServer(String command) {
         try {
             ExecutorService ex = Executors.newCachedThreadPool();
             Future<String> s = null;

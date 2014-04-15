@@ -7,22 +7,26 @@ import java.util.List;
  */
 class BashMaker {
     private String body;
-    private List<String> list;
+    private String list;
     private String teg;
 
-    public BashMaker(List<String> list,String body, String teg) {
+    public BashMaker(String list, String body, String teg) {
         this.body = body;
         this.list = list;
         this.teg = teg;
     }
 
-    public List<String> buildBashByTeg() throws Exception {
-        int i = 0;
-        for (String s : list) {
-            if (s.equalsIgnoreCase(teg)) break;
-            i++;
+    public String buildBashByTeg() throws Exception {
+        System.out.println(list + "1111111111");
+        if (list.contains(teg) && teg.equals("$(PERCENT)")) {
+            list = list.replace(teg, body + "%");
+            System.out.println(list + "111111111");
+            return list;
         }
-        list.set(i, body + "%");
-        return list;
+        if (list.contains(teg)) {
+            list = list.replace(teg, body);
+            return list;
+        }
+        return null;
     }
 }

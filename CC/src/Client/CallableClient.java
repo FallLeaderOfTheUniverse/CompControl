@@ -1,7 +1,7 @@
 package Client;
 
 import android.util.Log;
-import com.example.CC.BackComm;
+
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

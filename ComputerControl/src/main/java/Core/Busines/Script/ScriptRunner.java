@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by spier on 4/10/14.
  */
-public class ScriptRunner implements ScriptInterface{
+public class ScriptRunner implements Runnable{
     private String script;
 
     public ScriptRunner(String script) {
@@ -25,10 +25,13 @@ public class ScriptRunner implements ScriptInterface{
         CommandManager commandManager = new CommandManager(script);
         String command = null;
         try {
+
             command = commandManager.getCommand(script);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return command;
     }
 
@@ -38,6 +41,7 @@ public class ScriptRunner implements ScriptInterface{
         Runtime runtime = Runtime.getRuntime();
 
         try {
+            System.out.println("inner run " + script);
             Process process = runtime.exec(new String[]{"/bin/bash", "-c", script});
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             while ((resultExecute = bufferedReader.readLine()) != null) {

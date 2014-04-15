@@ -14,11 +14,16 @@ public class Chooser {
 
         BusinessApi api = new BusinessApi();
         String name = command.substring(0, 4);
-        String script = command.substring(5);
+        String script = null;
+        if (command.length() > 4) {
+            script = command.substring(5);
+        }
 
         if (name.equals("bash")) {
             //выполняем распознавание скрипта, возращается готовый скрипт, запускаем
             api.runScript(script);
+            //System.out.println("running " + script);
+            System.out.println("Chooser" + script);
             return "script is run";
         }
         if (name.equals("echo")) {
@@ -31,10 +36,11 @@ public class Chooser {
         }
         if (name.equals("audi")) {
             //получаем определенно построенный спиоск аудио файлов
-            return api.getAudio(Integer.parseInt(script));
+            return api.getAudio();
         }
         if (name.equals("vide")) {
             //получаем определенно построенный список видео файлов
+            //System.out.println("получаем видео");
             return api.getVideo();
         }
         return "wrong";

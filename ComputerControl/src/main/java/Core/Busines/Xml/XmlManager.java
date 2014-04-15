@@ -53,6 +53,21 @@ public class XmlManager {
         }
         return list;
     }
+
+    public List<String> getMusicList() throws JDOMException, IOException {
+        List<String> list = new ArrayList<String>();
+        SAXBuilder saxBuilder = new SAXBuilder();
+        File xmlFile = new File("music.xml");
+        Document document = (Document) saxBuilder.build(xmlFile);
+
+        Element rootNode = document.getRootElement();
+        List listNode = rootNode.getChildren("format");
+        for (int i = 0; i < listNode.size(); i++) {
+            Element node = (Element) listNode.get(i);
+            list.add(node.getChildText("resolution"));
+        }
+        return list;
+    }
 }
 
 

@@ -1,3 +1,4 @@
+/*
 package Client;
 
 import java.io.BufferedReader;
@@ -7,9 +8,11 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.List;
 
+*/
 /**
  * Created by spier on 4/6/14.
- */
+ *//*
+
 
 //TODO: обеспечить устойчивость связи
 public class TTClientStarter implements Runnable{
@@ -68,3 +71,4 @@ public class TTClientStarter implements Runnable{
 
     }
 }
+*/

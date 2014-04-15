@@ -1,3 +1,4 @@
+/*
 package Client;
 
 import java.io.BufferedReader;
@@ -7,9 +8,11 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.List;
 
+*/
 /**
  * Created by Syomin Stas on 4/12/14.
- */
+ *//*
+
 
 //создает сокет и стримы на нем
 class TTSocketConnector {
@@ -51,3 +54,4 @@ class TTSocketConnector {
     }
 }
 
+*/

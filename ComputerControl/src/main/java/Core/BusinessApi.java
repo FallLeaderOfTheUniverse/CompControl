@@ -1,12 +1,10 @@
 package Core;
 
 
-
-import Core.Busines.Managers.FileManager;
+import Core.Busines.File.FileManager;
 import Core.Busines.Script.ScriptRunner;
 
 import java.io.File;
-import java.util.List;
 
 /**
  * Created by spier on 4/10/14.
@@ -14,7 +12,7 @@ import java.util.List;
 public class BusinessApi implements ServerApi {
     @Override
     public void runScript(String script) {
-        new ScriptRunner(script).run();
+        new Thread(new ScriptRunner(script)).start();
     }
 
     @Override
@@ -34,14 +32,34 @@ public class BusinessApi implements ServerApi {
     }
 
     @Override
-    public String getAudio(Integer identification) {
-        //TODO: реализовать
-        return null;
+    public String getAudio() {
+        FileManager manager = new FileManager(new File("/"));
+        String s = "";
+        File file = new File("/home/spier/");
+
+        try {
+            for (File f : manager.getFilesMusic(file)) {
+                s += f.toString() + " ";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return s;
     }
 
     @Override
     public String getVideo() {
-        //TODO: realize it
-        return null;
+        FileManager manager = new FileManager(new File("/"));
+        String s = "";
+        File file = new File("/home/spier/");
+
+        try {
+            for (File f : manager.getFilesVideo(file)) {
+                s += f.toString() + " ";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return s;
     }
 }

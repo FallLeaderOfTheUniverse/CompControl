@@ -32,5 +32,12 @@
         <name>volume set</name>
         <make>amixer sset -q Master $(PERCENT)</make>
     </bash>
-
+    <bash>
+        <name>video play</name>
+        <make>vlc -f $(LINK)</make>
+    </bash>
+    <bash>
+        <name>music play</name>
+        <make>vlc $(LINK)</make>
+    </bash>
 </scripts>

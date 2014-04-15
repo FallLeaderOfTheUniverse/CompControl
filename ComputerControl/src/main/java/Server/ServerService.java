@@ -1,8 +1,5 @@
 package Server;
 
-
-
-
 import Core.Chooser;
 
 import java.io.BufferedReader;
@@ -47,7 +44,7 @@ public class ServerService implements Server {
                     Chooser chooser = new Chooser();
                     String s = chooser.commandRecognise(input);
                     out.println(s);
-                    System.out.println("answer" + s);
+                    System.out.println("answer " + s);
                 }
             }
         } catch (Exception e) {

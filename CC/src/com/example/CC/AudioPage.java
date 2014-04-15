@@ -1,6 +1,7 @@
 package com.example.CC;
 
-import Client.TTClientStarter;
+
+import Client.CallableClient;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 /**
  * Created by spier on 4/7/14.
  */
-public class AudioPage extends Activity implements SeekBar.OnSeekBarChangeListener{
+public class AudioPage extends Activity implements ServerCall{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,20 +38,39 @@ public class AudioPage extends Activity implements SeekBar.OnSeekBarChangeListen
         seekBar.setProgress(55);
         //new Thread(new ThreadForSocket("bash volume set " + seekBar.getProgress())).start();
 
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                callServer("bash volume set " + seekBar.getProgress());
+            }
+        });
+
     }
 
     @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        // TODO Auto-generated method stub
+    public void refresh(String s) {
+
     }
 
     @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-        // TODO Auto-generated method stub
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-        new Thread(new TTClientStarter("localhost" ,"bash volume set " + seekBar.getProgress())).start();
+    public void callServer(String command) {
+        try {
+            ExecutorService ex = Executors.newCachedThreadPool();
+            Future<String> s = null;
+            s = ex.submit(new CallableClient(command));
+            s.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

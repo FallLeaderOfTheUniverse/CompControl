@@ -3,8 +3,10 @@ package com.example.CC;
 /**
  * Created by Syomin Stas on 4/13/14.
  */
-public interface BackComm {
+public interface ServerCall {
 
     //интерфейс обратного вызова для клиента
-    public void makeCall();
+    void refresh(String s);
+
+    void callServer(String command);
 }

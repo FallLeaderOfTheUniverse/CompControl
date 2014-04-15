@@ -1,5 +1,3 @@
-import Core.Busines.Managers.FileManager;
-import Core.Chooser;
 import Server.ServerService;
 
 import java.io.File;
@@ -32,8 +30,17 @@ public class EnterClass {
 
 */
 
-        ServerService service = new ServerService();
-        service.startServer();
+
+     /*BusinessApi businessApi = new BusinessApi();
+        System.out.println(businessApi.getVideo());*/
+
+       /* FileManager fileManager = new FileManager(new File("/"));
+        File file = new File("/home/spier/");
+        System.out.println(fileManager.getFilesVideo(file));*/
+
+
+
+
 
         /*CommandManager manager = new CommandManager("bash volume set 100");
         System.out.println(manager.stringToList("bash volume set 100"));*/

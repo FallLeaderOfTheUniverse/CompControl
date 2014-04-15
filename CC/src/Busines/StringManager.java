@@ -56,4 +56,8 @@ public class StringManager {
         }
         return str;
     }
+
+    public String changeFile(String s) {
+      return s.replace(" ", "\\ ");
+    }
 }

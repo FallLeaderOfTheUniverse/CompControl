@@ -1,7 +1,6 @@
-package Core.Busines.Managers;
+package Core.Busines.File;
 
 import Core.Busines.Xml.XmlManager;
-import com.sun.deploy.util.ArrayUtil;
 import org.jdom.JDOMException;
 
 import java.io.File;
@@ -15,12 +14,17 @@ import java.util.List;
  * time - 12:36 AM
  */
 
+//TODO: пересмотреть весь класс, необходима большая гибкость и полиморфность
 public class FileManager {
     private File file;
+    private List<String> list;
+    private List<File> files;
 
     public FileManager(File file) {
         this.file = file;
     }
+
+    public FileManager() {}
 
     //содержимое folder
     //TODO: убрать скрытые папки из return
@@ -48,12 +52,11 @@ public class FileManager {
         List<File> files = new ArrayList<File>();
         XmlManager manager = new XmlManager();
         List<String> list = manager.getVideoList();
+        System.out.println("рекурсивно достаем файлы");
 
         return getRecursiveFiles(files, list);
     }
 
-    //тут рекурсия? возвращает все видео файлы
-    //да...это рекурсия(
     //рекурсионно достает все файлы
     private List<File> getRecursiveFiles(List<File> files, List<String> list) {
         if (file.listFiles() != null)
@@ -61,10 +64,43 @@ public class FileManager {
                 for (String l : list) {
                     if (f.toString().endsWith("." + l)) {
                         files.add(f);
+                        System.out.println(f.toString());
                     }
                 }
                 if (!f.toString().contains("/.")) {
                     getRecursiveFiles(files, list);
+                }
+            }
+        return files;
+    }
+
+    public List<File> getFilesMusic(File file) throws JDOMException, IOException {
+        files = new ArrayList<File>();
+        XmlManager manager = new XmlManager();
+        list = manager.getVideoList();
+
+        return getAllFiles(file);
+    }
+
+    public List<File> getFilesVideo(File file) throws JDOMException, IOException {
+        files = new ArrayList<File>();
+        XmlManager manager = new XmlManager();
+        list = manager.getVideoList();
+
+        return getAllFiles(file);
+    }
+
+
+    private List<File> getAllFiles(File root) {
+        if (root.listFiles() != null)
+            for (File f : root.listFiles()) {
+                for (String l : list) {
+                    if (f.toString().endsWith("." + l)) {
+                        files.add(f);
+                    }
+                }
+                if (!f.toString().contains("/.")) {
+                    getAllFiles(f);
                 }
             }
         return files;

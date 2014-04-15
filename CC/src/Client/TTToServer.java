@@ -1,3 +1,4 @@
+/*
 package Client;
 
 import android.util.Log;
@@ -9,9 +10,11 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 
+*/
 /**
  * Created by Syomin Stas on 4/12/14.
- */
+ *//*
+
 public class TTToServer implements Runnable {
     private final String IP = "192.168.1.7";
     private final Integer PORT = 4444;
@@ -33,10 +36,13 @@ public class TTToServer implements Runnable {
 
     @Override
     public void run() {
-        /*//создаем сокет и стримы на него
+        */
+/*//*
+/создаем сокет и стримы на него
         TTSocketConnector socketConnector = new TTSocketConnector(socket, in, out);
         socketConnector.connect();
-*/
+*//*
+
         try {
 
 
@@ -85,13 +91,16 @@ public class TTToServer implements Runnable {
 
 
 
-        /*закрываем соединение
-        socketConnector.close();*/
+        */
+/*закрываем соединение
+        socketConnector.close();*//*
+
 
 
     }
 
-   /* public void connect() {
+   */
+/* public void connect() {
         try {
             address = InetAddress.getByName(IP);
             socket = new Socket(address, PORT);
@@ -111,5 +120,7 @@ public class TTToServer implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
+    }*//*
+
 }
+*/

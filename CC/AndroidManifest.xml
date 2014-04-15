@@ -25,5 +25,7 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".SystemPage"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".OnPlay"
+                  android:screenOrientation="portrait"/>
     </application>
 </manifest>

@@ -21,31 +21,28 @@ class CommandManager {
 
     public String getCommand(String command) throws Exception {
         StringManager stringManager = new StringManager(command);
-        return getBashCommandByClientText(stringManager.stringToList());
+        System.out.println("commandmanager " + command);
+        return getBashCommandByClientText(command);
     }
 
-    private String getBashCommandByClientText(List<String> list) throws Exception {
-        if (list.get(1).equals("volume")) {
-            if (list.get(2).equals("set")) {
-                return makeBash(list, 3, "$(PERCENT)", "volume set");
-            }
-            if (list.get(2).equals("mute")) {
-                return makeBash("volume mute");
-            }
+    private String getBashCommandByClientText(String list) throws Exception {
+        if (list.contains("volume set")) {
+            return makeBash(list, "$(PERCENT)" , "volume set", new String("volume set").length());
+        }
+        if (list.contains("video play")) {
+            return makeBash(list, "$(LINK)", "video play", new String("video play").length());
+        }
+        if (list.contains("music play")) {
+            return makeBash(list, "(LINK)", "music play", new String("music play.").length());
         }
         return null;
     }
 
-    private String makeBash(List<String> list, int i, String teg, String commandName) throws Exception{
-        StringManager stringManager = new StringManager(getFromXml(commandName));
-        BashMaker bashMaker = new BashMaker(stringManager.stringToList(), list.get(i), teg);
+    private String makeBash(String list, String teg, String commandName, int i) throws Exception{
+        //StringManager stringManager = new StringManager(getFromXml(commandName));
 
-        String out = "";
-        for (String s : bashMaker.buildBashByTeg()) {
-            if (out.equals("")) out = s;
-            else out = out + " " + s;
-        }
-        return out;
+        BashMaker bashMaker = new BashMaker(getFromXml(commandName), list.substring(i), teg);
+        return bashMaker.buildBashByTeg();
     }
 
     private String makeBash(String commandName) throws Exception{

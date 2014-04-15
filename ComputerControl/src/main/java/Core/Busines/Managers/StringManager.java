@@ -14,10 +14,15 @@ public class StringManager {
     }
 
     public List<String> stringToList() {
+        int j = string.indexOf("/");
         List<String> strings = new ArrayList<String>();
         while (!string.equals("")) {
             int i = string.indexOf(" ");
             if (i == (-1)) {
+                strings.add(string);
+                return strings;
+            }
+            if (i > j) {
                 strings.add(string);
                 return strings;
             }

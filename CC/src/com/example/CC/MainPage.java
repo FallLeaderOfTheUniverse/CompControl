@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainPage extends Activity implements BackComm{
+public class MainPage extends Activity{
     String answer;
     /**
      * Called when the activity is first created.
@@ -56,9 +56,8 @@ public class MainPage extends Activity implements BackComm{
         //new Thread(new TTToServer("echo blabla", answer, MainPage.this ));
     }
 
-    @Override
-    public void makeCall() {
 
-    }
+
+
 }
 

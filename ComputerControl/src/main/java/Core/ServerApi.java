@@ -14,7 +14,7 @@ interface ServerApi {
 
     public String getFiles(File file);
 
-    public String getAudio(Integer iden);
+    public String getAudio();
 
     public String getVideo();
 }
